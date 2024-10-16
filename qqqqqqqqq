@@ -1,0 +1,127 @@
+[33mcommit 8cfdc2689011c9532a1999c3cb6e975688b885ea[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Wed Oct 16 15:14:42 2024 +0200
+
+    test push
+
+[33mcommit b45236fb2d817955bd4cbbe9a66d05002ec83d45[m
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Wed Oct 16 14:15:00 2024 +0200
+
+    MàJ code
+
+[33mcommit e3313691ee24f8973cba3f1477b314eb26c002b1[m[33m ([m[1;32mmenu[m[33m)[m
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Tue Oct 1 17:24:51 2024 +0200
+
+    la couleur est pas bonne
+
+[33mcommit a2b16b9148e89137823f08aa77be399532aaac66[m
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Tue Oct 1 17:23:46 2024 +0200
+
+    modif preimere ligne
+
+[33mcommit c8ec2479beb2e54b7ab32180b66f65581f0cb3cc[m
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Tue Oct 1 17:23:12 2024 +0200
+
+    modif couleur
+
+[33mcommit 33a1eda45edd450753b2d72069aef4ae64f88eef[m[33m ([m[1;32mcss_V2[m[33m)[m
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Tue Oct 1 17:05:20 2024 +0200
+
+    oublie en despi
+
+[33mcommit dc37c9ae44c804a30983b78ab5288e79501f5e6c[m
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Tue Oct 1 17:15:46 2024 +0200
+
+    résolu
+
+[33mcommit be88ae75b6160e0d55161f0ab4d7809a4f8b80bb[m
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Tue Oct 1 17:13:38 2024 +0200
+
+    modif Head
+
+[33mcommit 18ec233642fd600ddc358b2e6878bebe0ab37a5e[m
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Tue Oct 1 17:10:10 2024 +0200
+
+    ajout balise HEAD
+
+[33mcommit 5962ce9f3d28e94075b46a01e2d6ecedaec4b108[m
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Tue Oct 1 16:57:02 2024 +0200
+
+    csc
+
+[33mcommit 05faffa515e7c85bc2f20a171ff38b9d5322a7d6[m
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Tue Oct 1 16:55:02 2024 +0200
+
+    les sources toujours
+
+[33mcommit ffefdd15337ff9ff665d8b285bb764baeea116de[m
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Tue Oct 1 16:39:29 2024 +0200
+
+    remise au propre
+
+[33mcommit 87d58638b96db8b80361f699a6cee6e37ea5372a[m
+Merge: 46dfbc4 d08ff8f
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Tue Oct 1 16:35:50 2024 +0200
+
+    decision finale
+
+[33mcommit 46dfbc4e66335f3ee34b7308e35f2b4bab571f7a[m
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Tue Oct 1 16:33:52 2024 +0200
+
+    titre en vert
+
+[33mcommit d08ff8f5e8a9d32e0c90658aed8a1fda6eb0537f[m
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Tue Oct 1 16:32:27 2024 +0200
+
+    titre en bleu
+
+[33mcommit ead8aa64dd3d648a774a4929ece33b7032b002f5[m
+Merge: 7aadb32 27365cb
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Tue Oct 1 15:43:12 2024 +0200
+
+    Merge branch 'page_contact'
+
+[33mcommit 27365cb14e68a583b9fb04802d578be44b1e83e2[m[33m ([m[1;32mpage_contact[m[33m)[m
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Tue Oct 1 15:42:16 2024 +0200
+
+    remodif
+
+[33mcommit 7aadb32d1253f865bcf52162663dff0ae828debf[m
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Tue Oct 1 15:31:15 2024 +0200
+
+    créa page contact
+
+[33mcommit 6ed8787041e104f9ff535ffadfd962a600d24270[m[33m ([m[1;32mligne_graphique[m[33m)[m
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Tue Oct 1 15:28:22 2024 +0200
+
+    modif css
+
+[33mcommit 0cd854f28bfaa468afcecd9e59bd88d6b8da701a[m
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Tue Oct 1 15:27:35 2024 +0200
+
+    créa css
+
+[33mcommit 7ddb3117fde5eadecf422b5cd1a2a25a46469444[m
+Author: mazatruc <mdelacourt2003@gmail.com>
+Date:   Tue Oct 1 15:25:54 2024 +0200
+
+    html Hello Word
