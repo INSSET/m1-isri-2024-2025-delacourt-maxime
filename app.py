@@ -11,9 +11,9 @@ FILE_PATH = "form_data.txt"
 def index():
     """Page d'accueil."""
     return render_template('index.html')
+
+
 @app.route('/form', methods=['GET', 'POST'])
-
-
 def form():
     """Page de formulaire pour ajouter des contacts."""
     if request.method == 'POST':
