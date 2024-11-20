@@ -1,16 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for
 import os
-
 app = Flask(__name__)
-
 # Chemin du fichier où les données des contacts sont enregistrées
 FILE_PATH = "form_data.txt"
-
 @app.route('/')
 def index():
     """Page d'accueil."""
-    return render_template('index.html')
-
+    return render_template('index.html')\
 @app.route('/form', methods=['GET', 'POST'])
 def form():
     """Page de formulaire pour ajouter des contacts."""
@@ -26,7 +22,6 @@ def form():
         return redirect(url_for('view_contacts'))
 
     return render_template('form.html')
-
 @app.route('/contacts')
 def view_contacts():
     """Page pour afficher tous les contacts."""
@@ -39,8 +34,6 @@ def view_contacts():
                     "name": name.split(": ")[1],
                     "email": email.split(": ")[1],
                 })
-
     return render_template('contacts.html', contacts=contacts)
-
 if __name__ == '__main__':
     app.run(debug=True)
