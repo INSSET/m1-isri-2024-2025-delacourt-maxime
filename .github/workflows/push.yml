@@ -4,11 +4,9 @@ on:
   push:
     branches:
       - seance_4
-
-
 jobs:
   build-and-test:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       # Étape 1 : Vérifier le dépôt
