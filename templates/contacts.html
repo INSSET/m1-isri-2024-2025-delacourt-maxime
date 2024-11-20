@@ -1,9 +1,5 @@
-{% extends "base.html" %}
-
-{% block content %}
 <section style="max-width: 800px; margin: 20px auto;">
     <h2>Liste des Contacts</h2>
-    {% if contacts %}
     <table style="width: 100%; border-collapse: collapse; text-align: left;">
         <thead>
         <tr>
@@ -12,16 +8,14 @@
         </tr>
         </thead>
         <tbody>
-        {% for contact in contacts %}
+        for contact in contacts
         <tr>
             <td style="border: 1px solid #ddd; padding: 8px;">{{ contact.name }}</td>
             <td style="border: 1px solid #ddd; padding: 8px;">{{ contact.email }}</td>
         </tr>
-        {% endfor %}
+
         </tbody>
     </table>
-    {% else %}
-    <p>Aucun contact enregistré.</p>
-    {% endif %}
+
 </section>
-{% endblock %}
+

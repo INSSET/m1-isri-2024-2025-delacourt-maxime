@@ -1,93 +1,46 @@
-from flask import Flask, request, jsonify
+from flask import Flask, render_template, request, redirect, url_for
 import os
 
 app = Flask(__name__)
-    
-   # Chemin du fichier où les données seront enregistrées
+
+# Chemin du fichier où les données des contacts sont enregistrées
 FILE_PATH = "form_data.txt"
-    
+
 @app.route('/')
+def index():
+    """Page d'accueil."""
+    return render_template('index.html')
+
+@app.route('/form', methods=['GET', 'POST'])
 def form():
-    return '''
-    <form method="POST" action="/submit">
-        <label for="name">Nom :</label>
-        <input type="text" id="name" name="name" required>
-        <br>
-        <label for="email">Email :</label>
-        <input type="email" id="email" name="email" required>
-        <br>
-        <button type="submit">Envoyer</button>
-    </form>
-    '''
-    
-@app.route('/submit', methods=['POST'])
-def submit_form():
-    # Récupération des données du formulaire
-    name = request.form.get('name')
-    email = request.form.get('email')
+    """Page de formulaire pour ajouter des contacts."""
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
 
-    # Création ou ajout au fichier
-    with open(FILE_PATH, 'a') as f:
-      f.write(f"Nom: {name}, Email: {email}\n")
+        # Enregistrer les données dans un fichier
+        with open(FILE_PATH, 'a') as f:
+            f.write(f"Nom: {name}, Email: {email}\n")
 
-    return jsonify({"message": "Données enregistrées avec succès !"})
+        # Rediriger vers la liste des contacts après soumission
+        return redirect(url_for('view_contacts'))
+
+    return render_template('form.html')
+
+@app.route('/contacts')
+def view_contacts():
+    """Page pour afficher tous les contacts."""
+    contacts = []
+    if os.path.exists(FILE_PATH):
+        with open(FILE_PATH, 'r') as f:
+            for line in f:
+                name, email = line.strip().split(", ")
+                contacts.append({
+                    "name": name.split(": ")[1],
+                    "email": email.split(": ")[1],
+                })
+
+    return render_template('contacts.html', contacts=contacts)
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-@app.route('/contact')
-def view_contacts():
-    # Lecture des données du fichier
-    if os.path.exists(FILE_PATH):
-        with open(FILE_PATH, 'r') as f:
-            data = f.readlines()
-    else:
-        data = []
-
-    # Génération de la table HTML
-    table_rows = ""
-    for line in data:
-        name, email = line.strip().split(", ")
-        name = name.split(": ")[1]  # Extrait le nom
-        email = email.split(": ")[1]  # Extrait l'email
-        table_rows += f"<tr><td>{name}</td><td>{email}</td></tr>"
-
-    return f"""
-    <!DOCTYPE html>
-    <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Liste des contacts</title>
-        <style>
-            table {{
-                border-collapse: collapse;
-                width: 50%;
-                margin: 20px auto;
-            }}
-            th, td {{
-                border: 1px solid #ddd;
-                padding: 8px;
-                text-align: left;
-            }}
-            th {{
-                background-color: #f4f4f4;
-            }}
-        </style>
-    </head>
-    <body>
-        <h1 style="text-align: center;">Liste des Contacts</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                {table_rows}
-            </tbody>
-        </table>
-    </body>
-    </html>
-    """
