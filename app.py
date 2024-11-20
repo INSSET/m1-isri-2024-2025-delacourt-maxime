@@ -6,10 +6,11 @@ app = Flask(__name__)
 # Chemin du fichier où les données des contacts sont enregistrées
 FILE_PATH = "form_data.txt"
 
+
 @app.route('/')
 def index():
     """Page d'accueil."""
-    return render_template('index.html')\
+    return render_template('index.html')
 @app.route('/form', methods=['GET', 'POST'])
 
 
@@ -42,5 +43,7 @@ def view_contacts():
                     "email": email.split(": ")[1],
                 })
     return render_template('contacts.html', contacts=contacts)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
