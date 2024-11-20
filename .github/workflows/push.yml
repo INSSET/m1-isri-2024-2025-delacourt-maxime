@@ -27,6 +27,10 @@ jobs:
           pip install pytest
           pip install flake8
 
+      - name: Lint code with Flake8
+        run: |
+          flake8 . --count --max-line-length=79 --statistics
+
       # Étape 4 : Lancer les tests
       - name: Run tests
         run: |
