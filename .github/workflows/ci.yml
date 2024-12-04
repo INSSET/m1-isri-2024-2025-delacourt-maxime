@@ -36,7 +36,6 @@ jobs:
       # Étape 4 : Exécuter les tests Pytest
       - name: Run Pytest
         run: |
-          $env:PYTHONPATH="/home/runner/work/m1-isri-2024-2025-delacourt-maxime/m1-isri-2024-2025-delacourt-maxime/"
           pytest --html=tests/rapport/rapport.html --self-contained-html
 
       # Étape 5 : Sauvegarder le rapport des tests
