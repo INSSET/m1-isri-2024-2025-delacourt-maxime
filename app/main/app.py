@@ -1,6 +1,4 @@
-from flask, import Flask, render_template, request, redirect, url_for
-from app.lib.Validateur import Validateur
-from app.lib.FichierVisiteur import FichierVisiteur
+from flask import Flask, render_template, request, redirect, url_for
 import os
 
 app = Flask(__name__)
