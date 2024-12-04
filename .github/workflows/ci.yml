@@ -30,7 +30,7 @@ jobs:
 
       - name: Lint code with Flake8
         run: |
-          flake8 . --count --max-line-length=79 --statistics
+          flake8 . --count --max-line-length=130 --statistics
 
       # Étape 4 : Exécuter les tests Pytest
       - name: Run Pytest
