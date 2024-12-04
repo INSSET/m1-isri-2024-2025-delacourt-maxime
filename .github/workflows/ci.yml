@@ -3,7 +3,7 @@ name: Upload Form Data
 on:
   push:
     branches:
-      - seance_4
+      - seance5-test-unitaire
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -25,17 +25,21 @@ jobs:
           python -m pip install --upgrade pip
           pip install Flask
           pip install pytest
+          pip install pytest-html
           pip install flake8
 
       - name: Lint code with Flake8
         run: |
           flake8 . --count --max-line-length=79 --statistics
 
-      # Étape 4 : Lancer les tests
-      - name: Run tests
+      # Étape 4 : Exécuter les tests Pytest
+      - name: Run Pytest
         run: |
-          if [ -f "tests/test_app.py" ]; then
-            pytest
-          else
-            echo "No tests found. Skipping test step."
-          fi
+          pytest --html=tests/rapport/rapport.html
+
+      # Étape 5 : Sauvegarder le rapport des tests
+      - name: Upload test report
+        uses: actions/upload-artifact@v3
+        with:
+          name: pytest-rapport
+          path: tests/rapport/rapport.html
