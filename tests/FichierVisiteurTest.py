@@ -1,16 +1,14 @@
 import pytest
 from app.lib.FichierVisiteur import FichierVisiteur
 
+
 @pytest.fixture
-
-
 def fichier_visiteur():
     """Fixture pour instancier un objet FichierVisiteur."""
     return FichierVisiteur()
 
+
 @pytest.fixture
-
-
 def fichier_temporaire(tmp_path):
     """Créer un fichier temporaire pour les tests."""
     chemin_fichier = tmp_path / "rapport/test_fichier.txt"

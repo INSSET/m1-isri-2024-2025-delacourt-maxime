@@ -1,9 +1,8 @@
 import pytest
 from app.lib.Validateur import Validateur
 
+
 @pytest.fixture
-
-
 def validateur():
     """Fixture pour instancier un objet Validateur."""
     return Validateur()
