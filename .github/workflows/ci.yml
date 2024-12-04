@@ -27,7 +27,6 @@ jobs:
           pip install pytest
           pip install pytest-html
           pip install flake8
-          $env:PYTHONPATH="/home/runner/work/m1-isri-2024-2025-delacourt-maxime/m1-isri-2024-2025-delacourt-maxime/"
 
 
       - name: Lint code with Flake8
@@ -37,6 +36,7 @@ jobs:
       # Étape 4 : Exécuter les tests Pytest
       - name: Run Pytest
         run: |
+          $env:PYTHONPATH="/home/runner/work/m1-isri-2024-2025-delacourt-maxime/m1-isri-2024-2025-delacourt-maxime/"
           pytest --html=tests/rapport/rapport.html --self-contained-html
 
       # Étape 5 : Sauvegarder le rapport des tests
