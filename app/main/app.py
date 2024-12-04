@@ -1,4 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
+from app.lib.Validateur import Validateur
+from app.lib.FichierVisiteur import FichierVisiteur
 import os
 
 app = Flask(__name__)
@@ -11,6 +13,7 @@ FILE_PATH = "../../form_data.txt"
 def index():
     """Page d'accueil."""
     return render_template('index.html')
+
 
 @app.route('/contacts')
 def view_contacts():
@@ -26,6 +29,7 @@ def view_contacts():
                 })
     return render_template('contacts.html', contacts=contacts)
 
+
 @app.route('/form', methods=['GET', 'POST'])
 def form():
     if request.method == 'POST':
@@ -36,9 +40,9 @@ def form():
         }
 
         # Valider les données
-        if validateur.est_valide(données):
+        if Validateur.est_valide(données):
             # Enregistrer dans un fichier
-            visiteur.écrire_données_formulaire("form_data.txt", données)
+            FichierVisiteur.écrire_données_formulaire("form_data.txt", données)
             message = "Les données ont été enregistrées avec succès."
         else:
             message = "Les données sont invalides. Veuillez réessayer."
@@ -46,6 +50,7 @@ def form():
         return render_template("contact.html", message=message)
 
     return render_template("contact.html")
+
 
 app = Flask(__name__)
 

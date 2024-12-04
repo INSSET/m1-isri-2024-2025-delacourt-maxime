@@ -36,3 +36,4 @@ def test_validateur_données_vide(validateur):
 def test_validateur_données_incomplètes(validateur):
     données = {"nom": "Alice"}
     assert validateur.est_valide(données) is False
+    return "False"

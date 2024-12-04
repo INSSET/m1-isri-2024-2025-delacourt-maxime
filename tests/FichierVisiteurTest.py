@@ -21,17 +21,12 @@ def test_lire_fichier_existant(fichier_visiteur, fichier_temporaire):
     assert contenu == "Ligne initiale\n"
 
 
-def test_lire_fichier_inexistant(fichier_visiteur):
-    with pytest.raises(FileNotFoundError):
-        fichier_visiteur.lire_fichier("fichier_inexistant.txt")
-
-
 def test_écrire_dans_fichier(fichier_visiteur, tmp_path):
-    chemin_fichier = tmp_path / "test_écriture.txt"
+    chemin_fichier = tmp_path / "rapport/test_fichier.txt"
     données = {"nom": "Alice", "Prenom": "test"}
     fichier_visiteur.écrire_données_formulaire(chemin_fichier, données)
 
-    contenu = chemin_fichier.read_text()
+    contenu = chemin_fichier.read_text("rapport/test_fichier.txt")
     assert contenu.strip() == "Nom: Alice, Prenom: test"
 
 
@@ -42,3 +37,8 @@ def test_ajout_dans_fichier(fichier_visiteur, fichier_temporaire):
     lignes = contenu.strip().split("\n")
     assert len(lignes) == 2
     assert lignes[-1] == "Nom: Bob, Prenom: test"
+
+
+def test_lire_fichier_inexistant(fichier_visiteur):
+    with pytest.raises(FileNotFoundError):
+        fichier_visiteur.lire_fichier("fichier_inexistant.txt")
