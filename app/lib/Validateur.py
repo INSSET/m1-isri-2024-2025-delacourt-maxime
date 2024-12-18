@@ -1,5 +1,6 @@
 import re
 
+
 class Validateur:
     @staticmethod
     def valider_nom_prenom(valeur):

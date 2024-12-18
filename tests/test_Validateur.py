@@ -1,6 +1,7 @@
 import pytest
 from app.lib.Validateur import Validateur
 
+
 @pytest.mark.parametrize("nom, resultat_attendu", [
     ("Jean", True),
     ("Jean-Pierre", True),
