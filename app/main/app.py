@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
-from app.lib.Validateur import Validateur
-from app.lib.FichierVisiteur import FichierVisiteur
+from .lib.Validateur import Validateur
+from .lib.FichierVisiteur import FichierVisiteur
 import os
 
 app = Flask(__name__)

@@ -1,44 +1,32 @@
 import pytest
 from app.lib.FichierVisiteur import FichierVisiteur
+import os
 
-
-@pytest.fixture
-def fichier_visiteur():
-    """Fixture pour instancier un objet FichierVisiteur."""
-    return FichierVisiteur()
-
+CHEMIN_TEST = "test_Fichier.txt"
 
 @pytest.fixture
-def fichier_temporaire(tmp_path):
-    """Créer un fichier temporaire pour les tests."""
-    chemin_fichier = tmp_path / "rapport/test_fichier.txt"
-    chemin_fichier.write_text("Ligne initiale\n")
-    return chemin_fichier
+def setup_fichier():
 
+    if os.path.exists(CHEMIN_TEST):
+        os.remove(CHEMIN_TEST)
+    yield
 
-def test_lire_fichier_existant(fichier_visiteur, fichier_temporaire):
-    contenu = fichier_visiteur.lire_fichier(fichier_temporaire)
-    assert contenu == "Ligne initiale\n"
+    if os.path.exists(CHEMIN_TEST):
+        os.remove(CHEMIN_TEST)
 
+def test_ajout_visiteur_valide(setup_fichier):
+    fichier = FichierVisiteur(CHEMIN_TEST)
+    assert fichier.ajout("Alice", "Bob")
+    assert os.path.exists(CHEMIN_TEST)
 
-def test_écrire_dans_fichier(fichier_visiteur, tmp_path):
-    chemin_fichier = tmp_path / "rapport/test_fichier.txt"
-    données = {"nom": "Alice", "Prenom": "test"}
-    fichier_visiteur.écrire_données_formulaire(chemin_fichier, données)
+def test_lecture_visiteurs(setup_fichier):
+    fichier = FichierVisiteur(CHEMIN_TEST)
+    fichier.ajout("Alice", "Bob")
+    fichier.ajout("Eve", "William")
+    visiteurs = fichier.tout_lire()
+    assert visiteurs == ["Alice,Bob", "Eve,William"]
 
-    contenu = chemin_fichier.read_text("rapport/test_fichier.txt")
-    assert contenu.strip() == "Nom: Alice, Prenom: test"
-
-
-def test_ajout_dans_fichier(fichier_visiteur, fichier_temporaire):
-    données = {"nom": "Bob", "âge": 'testiing'}
-    fichier_visiteur.écrire_données_formulaire(fichier_temporaire, données)
-    contenu = fichier_temporaire.read_text()
-    lignes = contenu.strip().split("\n")
-    assert len(lignes) == 2
-    assert lignes[-1] == "Nom: Bob, Prenom: test"
-
-
-def test_lire_fichier_inexistant(fichier_visiteur):
-    with pytest.raises(FileNotFoundError):
-        fichier_visiteur.lire_fichier("fichier_inexistant.txt")
+def test_ajout_visiteur_invalide(setup_fichier):
+    fichier = FichierVisiteur(CHEMIN_TEST)
+    assert not fichier.ajout("Jean--Pierre", "Jean")
+    assert fichier.tout_lire() == []

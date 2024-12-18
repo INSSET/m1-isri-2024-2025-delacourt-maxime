@@ -33,14 +33,31 @@ jobs:
         run: |
           flake8 . --count --max-line-length=130 --statistics
 
-      # Étape 4 : Exécuter les tests Pytest
-      - name: Run Pytest
-        run: |
-          pytest --html=tests/rapport/rapport.html --self-contained-html
+  test:
+    name: Run Tests and Generate Coverage Report
+    runs-on: ubuntu-latest
 
-      # Étape 5 : Sauvegarder le rapport des tests
-      - name: Upload test report
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.12'
+
+      - name: Set PYTHONPATH
+        run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)/public" >> $GITHUB_ENV
+
+      - name: Install dependencies
+        run: |
+          pip install pytest pytest-cov
+
+      - name: Run Tests
+        run: pytest --cov=public/app/lib --cov-report=html:public/tests/rapport
+
+      - name: Upload Coverage Report
         uses: actions/upload-artifact@v3
         with:
-          name: pytest-rapport
-          path: tests/rapport/rapport.html
+          name: coverage-report
+          path: public/tests/rapport

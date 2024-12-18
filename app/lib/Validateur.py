@@ -1,24 +1,19 @@
+import re
+
 class Validateur:
-    """
-    Classe pour valider les données utilisateur.
-    """
+    @staticmethod
+    def valider_nom_prenom(valeur):
 
-    def est_valide(self, données):
-        """
-        Vérifie si les données fournies sont valides.
-
-        :param données: dict, les données à valider ("nom" et "Prenom")
-        :return: bool, True si les données sont valides, False sinon
-        """
-        if not isinstance(données, dict):
+        if not (2 <= len(valeur) <= 60):
             return False
 
-        # Vérifie que 'nom' est une chaine non vide
-        if "nom" not in données or not isinstance(données["nom"], str) or not données["nom"].strip():
+        if not re.match(r"^[a-zA-Z]([- a-zA-Z]{0,58}[a-zA-Z])?$", valeur):
             return False
 
-        # Vérifie que 'Prenom' est une chaine non vide
-        if "Prenom" not in données or not isinstance(données["Prenom"], str) or not données["Prenom"].strip():
+        if "--" in valeur or "  " in valeur:
+            return False
+
+        if valeur.count('-') > 5 or valeur.count(' ') > 5:
             return False
 
         return True
