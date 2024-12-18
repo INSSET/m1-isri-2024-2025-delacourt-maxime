@@ -9,17 +9,17 @@ def validateur():
 
 
 def test_validateur_données_valides(validateur):
-    données = {"nom": "Alice", "âge": "test"}
+    données = {"nom": "Alice", "prenom": "test"}
     assert validateur.est_valide(données) is True
 
 
 def test_validateur_nom_vide(validateur):
-    données = {"nom": "", "âge": "test"}
+    données = {"nom": "", "prenom": "test"}
     assert validateur.est_valide(données) is False
 
 
 def test_validateur_nom_absent(validateur):
-    données = {"âge": 25}
+    données = {"prenom": 25}
     assert validateur.est_valide(données) is False
 
 

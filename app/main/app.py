@@ -22,10 +22,10 @@ def view_contacts():
     if os.path.exists(FILE_PATH):
         with open(FILE_PATH, 'r') as f:
             for line in f:
-                name, email = line.strip().split(", ")
+                nom, prenom = line.strip().split(", ")
                 contacts.append({
-                    "name": name.split(": ")[1],
-                    "email": email.split(": ")[1],
+                    "nom": nom.split(": ")[1],
+                    "prenom": prenom.split(": ")[1],
                 })
     return render_template('contacts.html', contacts=contacts)
 
